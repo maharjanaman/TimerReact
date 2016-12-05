@@ -18,7 +18,7 @@ var Nav = () => {
       <div className="top-bar-right">
         <ul className="menu">
           <li className="menu-text">
-            Created by Aman
+            Created by <a href="https://www.facebook.com/mhrjn.aman" target="#">Aman</a>
           </li>
         </ul>
       </div>
