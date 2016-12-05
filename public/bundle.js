@@ -105,14 +105,14 @@
 	
 	var Main = __webpack_require__(248);
 	var Countdown = __webpack_require__(250);
-	var Timer = __webpack_require__(252);
+	var Timer = __webpack_require__(253);
 	
 	// Load foundation
-	__webpack_require__(253);
+	__webpack_require__(254);
 	$(document).foundation();
 	
 	// App css
-	__webpack_require__(257);
+	__webpack_require__(258);
 	
 	ReactDOM.render(React.createElement(
 	  Router,
@@ -27170,18 +27170,13 @@
 	  return React.createElement(
 	    'div',
 	    null,
+	    React.createElement(Nav, null),
 	    React.createElement(
 	      'div',
-	      null,
+	      { className: 'row' },
 	      React.createElement(
 	        'div',
-	        null,
-	        React.createElement(Nav, null),
-	        React.createElement(
-	          'p',
-	          { className: 'main-title' },
-	          'Main Component Rendered'
-	        ),
+	        { className: 'column small-centered medium-6 large-4' },
 	        props.children
 	      )
 	    )
@@ -27269,12 +27264,32 @@
 	var React = __webpack_require__(8);
 	
 	var Clock = __webpack_require__(251);
+	var CountdownForm = __webpack_require__(252);
 	
 	var Countdown = React.createClass({
 	  displayName: 'Countdown',
 	
+	  getInitialState: function getInitialState() {
+	    return {
+	      count: 0
+	    };
+	  },
+	
+	  handleSetCountdown: function handleSetCountdown(seconds) {
+	    this.setState({
+	      count: seconds
+	    });
+	  },
+	
 	  render: function render() {
-	    return React.createElement(Clock, { totalSeconds: 129 });
+	    var count = this.state.count;
+	
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(Clock, { totalSeconds: count }),
+	      React.createElement(CountdownForm, { onSetCountdown: this.handleSetCountdown })
+	    );
 	  }
 	});
 	
@@ -27338,6 +27353,46 @@
 	
 	var React = __webpack_require__(8);
 	
+	var CountdownForm = React.createClass({
+	  displayName: 'CountdownForm',
+	
+	  onSubmit: function onSubmit(e) {
+	    e.preventDefault();
+	    var strSeconds = this.refs.seconds.value;
+	    if (strSeconds.match(/^[0-9]*$/)) {
+	      this.refs.seconds.value = '';
+	      this.props.onSetCountdown(parseInt(strSeconds, 10));
+	    }
+	  },
+	
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'form',
+	        { ref: 'form', onSubmit: this.onSubmit, className: 'countdown-form' },
+	        React.createElement('input', { type: 'text', ref: 'seconds', placeholder: 'Enter seconds' }),
+	        React.createElement(
+	          'button',
+	          { className: 'button expanded' },
+	          'Start'
+	        )
+	      )
+	    );
+	  }
+	});
+	
+	module.exports = CountdownForm;
+
+/***/ },
+/* 253 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var React = __webpack_require__(8);
+	
 	var Timer = React.createClass({
 	  displayName: 'Timer',
 	
@@ -27353,16 +27408,16 @@
 	module.exports = Timer;
 
 /***/ },
-/* 253 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(254);
+	var content = __webpack_require__(255);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(256)(content, {});
+	var update = __webpack_require__(257)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -27379,10 +27434,10 @@
 	}
 
 /***/ },
-/* 254 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(255)();
+	exports = module.exports = __webpack_require__(256)();
 	// imports
 	
 	
@@ -27393,7 +27448,7 @@
 
 
 /***/ },
-/* 255 */
+/* 256 */
 /***/ function(module, exports) {
 
 	/*
@@ -27449,7 +27504,7 @@
 
 
 /***/ },
-/* 256 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -27703,16 +27758,16 @@
 
 
 /***/ },
-/* 257 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(258);
+	var content = __webpack_require__(259);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(256)(content, {});
+	var update = __webpack_require__(257)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -27729,10 +27784,10 @@
 	}
 
 /***/ },
-/* 258 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(255)();
+	exports = module.exports = __webpack_require__(256)();
 	// imports
 	
 	
