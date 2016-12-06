@@ -27410,7 +27410,7 @@
 /* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function($) {'use strict';
+	'use strict';
 	
 	var React = __webpack_require__(8);
 	
@@ -27419,9 +27419,6 @@
 	
 	  onSubmit: function onSubmit(e) {
 	    e.preventDefault();
-	
-	    console.log('input count', $('input').length);
-	
 	    var strSeconds = this.refs.seconds.value;
 	    if (strSeconds.match(/^[0-9]*$/)) {
 	      this.refs.seconds.value = '';
@@ -27448,7 +27445,6 @@
 	});
 	
 	module.exports = CountdownForm;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ },
 /* 253 */
